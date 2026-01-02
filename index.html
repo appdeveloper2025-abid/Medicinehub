@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHARMADICES - Your Medicine Information Hub</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="medicines.html"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="medical-stores.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Trusted <span class="highlight">Medicine</span> Guide</h1>
+                <div class="typing-container">
+                    <p>Search <span class="typed-text" id="typed-text"></span><span class="cursor">|</span></p>
+                </div>
+                <p class="hero-subtitle">Comprehensive, reliable, and up-to-date medicine information at your fingertips.</p>
+                
+                <div class="hero-search">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="home-search" placeholder="Search for medicines by name, brand, or generic...">
+                        <button onclick="window.location.href='medicines.html'">Search</button>
+                    </div>
+                    <div class="search-hint">
+                        <span><i class="fas fa-lightbulb"></i> Try searching for "Panadol", "Augmentin", or "Paracetamol"</span>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <h3>1000+</h3>
+                        <p>Medicines Database</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>24/7</h3>
+                        <p>Accessible Information</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>100%</h3>
+                        <p>Free Resource</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What We Provide</h2>
+            <p class="section-subtitle">Comprehensive medicine information for healthcare professionals and patients</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Instant Search</h3>
+                    <p>Quickly find medicines by name, brand, or generic name with our powerful search engine.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>Detailed Information</h3>
+                    <p>Complete details including uses, dosage, side effects, precautions, and interactions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Store Locator</h3>
+                    <p>Find medical stores and pharmacies across Pakistan, including Lakki Marwat.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>Important precautions, pregnancy safety information, and storage guidelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">Quick Access</h2>
+            
+            <div class="links-grid">
+                <a href="medicines.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <h3>Browse Medicines</h3>
+                    <p>Explore our complete database of medicines</p>
+                </a>
+                
+                <a href="medical-stores.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Find Stores</h3>
+                    <p>Locate medical stores near you</p>
+                </a>
+                
+                <a href="contact.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Contact Us</h3>
+                    <p>Get in touch with our team</p>
+                </a>
+                
+                <a href="#footer" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Meet Our Team</h3>
+                    <p>Students of GPGC Lakki Marwat</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>IMPORTANT:</strong> Pharmadices is for informational purposes only and does not replace professional medical advice. Always consult a qualified healthcare provider before taking any medication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                    <div class="footer-disclaimer">
+                        <p><strong>Disclaimer:</strong> This information is for educational purposes only. Always consult a healthcare professional.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="medicines.html">Medicines Database</a></li>
+                        <li><a href="medical-stores.html">Medical Stores</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> info@pharmadices.com</p>
+                </div>
+            </div>
+            
+            <!-- Developer Cards -->
+            <div class="developers-section">
+                <h3 class="developers-title">Developed By Students of GPGC Lakki Marwat</h3>
+                
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/atif.jpg" alt="Atif">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Atif</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/hasnain.jpg" alt="Hasnain">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Hasnain</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/abid.jpg" alt="ABID">
+                        </div>
+                        <div class="developer-info">
+                            <h4>ABID</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PHARMADICES. All rights reserved. | Developed by Students of GPGC Lakki Marwat</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/typing.js"></script>
+    <script src="assets/js/autocomplete.js"></script>
+</body>
+</html>

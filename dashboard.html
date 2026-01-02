@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | PHARMADICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="medicines.html"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="medical-stores.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-header-content">
+                <h1 class="dashboard-title">Your Medicine Dashboard</h1>
+                <p class="dashboard-subtitle">Track your medicines, schedules, and health insights</p>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="scheduled-medicines">0</h3>
+                            <p>Scheduled Medicines</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="favorite-medicines">0</h3>
+                            <p>Favorite Medicines</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="reviewed-medicines">0</h3>
+                            <p>Reviewed Medicines</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="doses-today">0</h3>
+                            <p>Doses Today</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Today's Schedule -->
+                <div class="dashboard-card schedule-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-day"></i> Today's Schedule</h3>
+                        <button class="card-action-btn" onclick="window.location.href='medicines.html'">
+                            <i class="fas fa-plus"></i> Add Medicine
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="today-schedule">
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <p>No medicines scheduled for today</p>
+                                <button class="btn-primary" onclick="window.location.href='medicines.html'">
+                                    Schedule Medicine
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <button class="card-action-btn" id="clear-activity-btn">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="recent-activity">
+                            <div class="empty-state">
+                                <i class="fas fa-clock"></i>
+                                <p>No recent activity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Medicines -->
+                <div class="dashboard-card favorites-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-heart"></i> Favorite Medicines</h3>
+                        <button class="card-action-btn" onclick="window.location.href='medicines.html'">
+                            <i class="fas fa-search"></i> Browse
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="favorite-medicines-list">
+                            <div class="empty-state">
+                                <i class="fas fa-heart-broken"></i>
+                                <p>No favorite medicines yet</p>
+                                <button class="btn-primary" onclick="window.location.href='medicines.html'">
+                                    Browse Medicines
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medicine Insights -->
+                <div class="dashboard-card insights-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Medicine Insights</h3>
+                        <button class="card-action-btn" id="refresh-insights-btn">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="medicine-insights">
+                            <div class="insight-item">
+                                <div class="insight-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <div class="insight-info">
+                                    <h4>Most Used Medicine Type</h4>
+                                    <p id="most-used-type">Tablet</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <div class="insight-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="insight-info">
+                                    <h4>Average Rating Given</h4>
+                                    <p id="average-rating">4.2/5</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <div class="insight-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="insight-info">
+                                    <h4>Adherence Rate</h4>
+                                    <p id="adherence-rate">85%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card actions-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn" onclick="window.location.href='medicines.html'">
+                                <i class="fas fa-search"></i>
+                                <span>Search Medicines</span>
+                            </button>
+                            <button class="quick-action-btn" id="check-interactions-btn">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Check Interactions</span>
+                            </button>
+                            <button class="quick-action-btn" id="calculate-dosage-btn">
+                                <i class="fas fa-calculator"></i>
+                                <span>Calculate Dosage</span>
+                            </button>
+                            <button class="quick-action-btn" onclick="window.location.href='medical-stores.html'">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Find Stores</span>
+                            </button>
+                            <button class="quick-action-btn" id="export-data-btn">
+                                <i class="fas fa-download"></i>
+                                <span>Export Data</span>
+                            </button>
+                            <button class="quick-action-btn" id="backup-data-btn">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Backup Data</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Tips -->
+                <div class="dashboard-card tips-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Health Tips</h3>
+                        <button class="card-action-btn" id="next-tip-btn">
+                            <i class="fas fa-forward"></i> Next
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="health-tip">
+                            <div class="tip-content">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Always take medicines with a full glass of water unless otherwise directed by your healthcare provider.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>IMPORTANT:</strong> This dashboard is for informational and tracking purposes only. Always consult a qualified healthcare provider for medical advice and before making any changes to your medication regimen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                    <div class="footer-disclaimer">
+                        <p><strong>Disclaimer:</strong> This information is for educational purposes only. Always consult a healthcare professional.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="medicines.html">Medicines Database</a></li>
+                        <li><a href="medical-stores.html">Medical Stores</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> info@pharmadices.com</p>
+                </div>
+            </div>
+            
+            <!-- Developer Cards -->
+            <div class="developers-section">
+                <h3 class="developers-title">Developed By Students of GPGC Lakki Marwat</h3>
+                
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/atif.jpg" alt="Atif">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Atif</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/hasnain.jpg" alt="Hasnain">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Hasnain</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/abid.jpg" alt="ABID">
+                        </div>
+                        <div class="developer-info">
+                            <h4>ABID</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2023</span> PHARMADICES. All rights reserved. | Developed by Students of GPGC Lakki Marwat</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/medicine-tracker.js"></script>
+    <script src="assets/js/favorites.js"></script>
+    <script src="assets/js/medicine-reviews.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines Database | PHARMADICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="medicines.html" class="active"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="medical-stores.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Medicines Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Medicines Database</h1>
+                <p class="page-subtitle">Search and explore comprehensive information about 1000+ medicines</p>
+                
+                <!-- Search Section -->
+                <div class="search-section">
+                    <div class="search-container">
+                        <div class="search-box large">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="medicine-search" placeholder="Search by medicine name, brand, or generic name...">
+                            <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        
+                        <div class="search-filters">
+                            <div class="filter-group">
+                                <label for="search-type"><i class="fas fa-filter"></i> Search In:</label>
+                                <select id="search-type">
+                                    <option value="all">All Fields</option>
+                                    <option value="name">Medicine Name</option>
+                                    <option value="brand">Brand Name</option>
+                                    <option value="generic">Generic Name</option>
+                                    <option value="uses">Uses</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="medicine-type"><i class="fas fa-tag"></i> Medicine Type:</label>
+                                <select id="medicine-type">
+                                    <option value="all">All Types</option>
+                                    <option value="tablet">Tablet</option>
+                                    <option value="capsule">Capsule</option>
+                                    <option value="syrup">Syrup</option>
+                                    <option value="injection">Injection</option>
+                                    <option value="ointment">Ointment</option>
+                                    <option value="drops">Drops</option>
+                                </select>
+                            </div>
+                            
+                            <button id="clear-filters" class="clear-btn">
+                                <i class="fas fa-times"></i> Clear Filters
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-stats">
+                        <p><span id="total-medicines">0</span> medicines found | Showing <span id="showing-count">0</span> results</p>
+                    </div>
+                    
+                    <!-- Quick Actions Toolbar -->
+                    <div class="quick-actions-toolbar">
+                        <div class="toolbar-section">
+                            <h4><i class="fas fa-bolt"></i> Quick Actions</h4>
+                            <div class="action-buttons">
+                                <button class="action-btn print-list-btn">
+                                    <i class="fas fa-print"></i> Print List
+                                </button>
+                                <button class="action-btn" onclick="window.location.href='#favorites'">
+                                    <i class="fas fa-heart"></i> My Favorites
+                                </button>
+                                <button class="action-btn" id="random-medicine-btn">
+                                    <i class="fas fa-random"></i> Random Medicine
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Medicines Listing -->
+    <section class="medicines-section">
+        <div class="container">
+            <div class="medicines-container">
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state">
+                    <div class="loading-spinner">
+                        <i class="fas fa-pills fa-spin"></i>
+                    </div>
+                    <p>Loading medicines database...</p>
+                </div>
+                
+                <!-- No Results State -->
+                <div id="no-results" class="no-results-state" style="display: none;">
+                    <i class="fas fa-search fa-3x"></i>
+                    <h3>No Medicines Found</h3>
+                    <p>Try adjusting your search or filters to find what you're looking for.</p>
+                </div>
+                
+                <!-- Medicines Grid -->
+                <div id="medicines-grid" class="medicines-grid">
+                    <!-- Medicine cards will be dynamically inserted here -->
+                </div>
+                
+                <!-- Pagination -->
+                <div id="pagination" class="pagination" style="display: none;">
+                    <button id="prev-page" class="page-btn" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="page-numbers" id="page-numbers"></div>
+                    <button id="next-page" class="page-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="container">
+            <h2 class="section-title">Understanding Medicine Information</h2>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                    </div>
+                    <h3>Generic vs Brand</h3>
+                    <p>Generic medicines contain the same active ingredients as brand-name drugs but are usually more affordable.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Side Effects</h3>
+                    <p>Most medicines can cause side effects. Always report unusual symptoms to your healthcare provider.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Drug Interactions</h3>
+                    <p>Some medicines can interact with each other, foods, or supplements. Always inform your doctor about all medications you're taking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>IMPORTANT:</strong> This information is for educational purposes only. Always consult a qualified healthcare provider before taking any medication. Do not self-medicate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                    <div class="footer-disclaimer">
+                        <p><strong>Disclaimer:</strong> This information is for educational purposes only. Always consult a healthcare professional.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="medicines.html">Medicines Database</a></li>
+                        <li><a href="medical-stores.html">Medical Stores</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> info@pharmadices.com</p>
+                </div>
+            </div>
+            
+            <!-- Developer Cards -->
+            <div class="developers-section">
+                <h3 class="developers-title">Developed By Students of GPGC Lakki Marwat</h3>
+                
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/atif.jpg" alt="Atif">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Atif</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/hasnain.jpg" alt="Hasnain">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Hasnain</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/abid.jpg" alt="ABID">
+                        </div>
+                        <div class="developer-info">
+                            <h4>ABID</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2023</span> PHARMADICES. All rights reserved. | Developed by Students of GPGC Lakki Marwat</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Medicine Detail Modal -->
+    <div id="medicine-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Medicine Details</h2>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Medicine details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/autocomplete.js"></script>
+    <script src="assets/js/favorites.js"></script>
+    <script src="assets/js/print.js"></script>
+    <script src="assets/js/export.js"></script>
+    <script src="assets/js/advanced-search.js"></script>
+    <script src="assets/js/quick-actions.js"></script>
+    <script src="assets/js/medicine-tracker.js"></script>
+    <script src="assets/js/drug-interactions.js"></script>
+    <script src="assets/js/dosage-calculator.js"></script>
+    <script src="assets/js/medicine-reviews.js"></script>
+    <script src="assets/js/medicine-comparison.js"></script>
+</body>
+</html>

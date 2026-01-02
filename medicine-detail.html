@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Details | PHARMADICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="medicines.html"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="medical-stores.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Medicine Detail Header -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt;
+                <a href="medicines.html">Medicines</a> &gt;
+                <span id="breadcrumb-medicine">Medicine Details</span>
+            </div>
+            
+            <div class="detail-main-header">
+                <div class="detail-title-section">
+                    <h1 id="medicine-name">Loading Medicine...</h1>
+                    <div class="detail-subtitle">
+                        <span class="badge" id="medicine-type">Tablet</span>
+                        <span class="badge secondary" id="drug-class">Analgesic</span>
+                    </div>
+                </div>
+                
+                <div class="detail-actions">
+                    <button id="print-btn" class="action-btn print">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button id="back-btn" class="action-btn back">
+                        <i class="fas fa-arrow-left"></i> Back to Medicines
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Medicine Detail Content -->
+    <main class="medicine-detail">
+        <div class="container">
+            <div class="detail-content">
+                <!-- Loading State -->
+                <div id="loading-detail" class="loading-detail">
+                    <div class="loading-spinner">
+                        <i class="fas fa-pills fa-spin"></i>
+                    </div>
+                    <p>Loading medicine details...</p>
+                </div>
+                
+                <!-- Error State -->
+                <div id="error-detail" class="error-detail" style="display: none;">
+                    <i class="fas fa-exclamation-circle fa-3x"></i>
+                    <h3>Medicine Not Found</h3>
+                    <p>The requested medicine could not be found in our database.</p>
+                    <a href="medicines.html" class="btn-primary">
+                        <i class="fas fa-capsules"></i> Browse All Medicines
+                    </a>
+                </div>
+                
+                <!-- Medicine Details (Populated by JavaScript) -->
+                <div id="medicine-detail-content" style="display: none;">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Related Medicines -->
+            <section class="related-medicines" id="related-medicines" style="display: none;">
+                <h2 class="section-title">Related Medicines</h2>
+                <div class="related-grid" id="related-grid">
+                    <!-- Related medicines will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Important Information -->
+    <section class="important-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card warning">
+                    <div class="info-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Important Warning</h3>
+                    <p>Never take medicine without proper prescription from a qualified healthcare provider. Self-medication can be dangerous.</p>
+                </div>
+                
+                <div class="info-card emergency">
+                    <div class="info-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>In Case of Emergency</h3>
+                    <p>If you experience severe side effects or allergic reactions, seek immediate medical attention or call emergency services.</p>
+                </div>
+                
+                <div class="info-card storage">
+                    <div class="info-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Proper Storage</h3>
+                    <p>Store medicines in a cool, dry place away from direct sunlight and out of reach of children. Check expiration dates regularly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>MEDICAL DISCLAIMER:</strong> The information provided on Pharmadices is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                    <div class="footer-disclaimer">
+                        <p><strong>Disclaimer:</strong> This information is for educational purposes only. Always consult a healthcare professional.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="medicines.html">Medicines Database</a></li>
+                        <li><a href="medical-stores.html">Medical Stores</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> info@pharmadices.com</p>
+                </div>
+            </div>
+            
+            <!-- Developer Cards -->
+            <div class="developers-section">
+                <h3 class="developers-title">Developed By Students of GPGC Lakki Marwat</h3>
+                
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/atif.jpg" alt="Atif">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Atif</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/hasnain.jpg" alt="Hasnain">
+                        </div>
+                        <div class="developer-info">
+                            <h4>Hasnain</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-img">
+                            <img src="assets/images/developers/abid.jpg" alt="ABID">
+                        </div>
+                        <div class="developer-info">
+                            <h4>ABID</h4>
+                            <p>Student of GPGC Lakki Marwat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2023</span> PHARMADICES. All rights reserved. | Developed by Students of GPGC Lakki Marwat</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/medicine-detail.js"></script>
+</body>
+</html>
